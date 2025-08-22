@@ -1,1 +1,4 @@
-# app.fiscal
+pandas
+numpy
+matplotlib
+plotly
