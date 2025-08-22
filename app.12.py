@@ -12,9 +12,10 @@ mun=st.selectbox ("seleccione un municipio:",
              munis)
 filtro = data[data['entidad'] == mun]
              
-st.dataframe(filtro)
+#st.dataframe(filtro)
 gen=( filtro.groupby ('clas_gen')['total_recaudo']
     .sum())
+
 total_gen = gen.sum()
 gen = (gen/ total_gen).round(2)
 
@@ -24,19 +25,19 @@ det= (filtro
 total_det = det.sum()
 det= (det/ total_det).round(3)
                                 
-st.dataframe(gen) #clasificacion general
+#st.dataframe(gen) #clasificacion general
 
-st.dataframe(det) # clasificacion detallada
+#st.dataframe(det) # clasificacion detallada
 
-#pie chart
-fig,ax = plt.subplots(1,1,figsize=(10,6))
-ax.pie(gen.values,labels= gen.index)
+##pie chart
+#fig,ax = plt.subplots(1,1,figsize=(10,6))
+#ax.pie(gen.values,labels= gen.index)
 
-st.pyplot(fig)
-fig,ax =plt.subplots (1,1,figsize = (10,6))
-ax.pie(det.values,labels=det.index)
+#st.pyplot(fig)
+#fig,ax =plt.subplots (1,1,figsize = (10,6))
+#ax.pie(det.values,labels=det.index)
 
-st.pyplot(fig)
+#st.pyplot(fig)
 
 
 #treemap
@@ -44,7 +45,7 @@ fin= (filtro
      .groupby(['clas_gen','clasificacion_ofpuj'])['total_recaudo']
      .sum()
      .reset_index())
-st.dataframe(fin)
+#st.dataframe(fin)
 
 fig= px.treemap(fin ,path =[px.Constant("Total"),
                             'clas_gen',
@@ -53,3 +54,14 @@ fig= px.treemap(fin ,path =[px.Constant("Total"),
 
 st.plotly_chart(fig)
     
+
+
+#pie chat1
+fig1 = px.pie(
+    names=gen.index,
+    values=gen.values,
+    title="distribucion general"
+)
+    
+                 
+st.plotly_chart(fig1)
