@@ -1,4 +1,1 @@
-pandas
-numpy
-matplotlib
-plotly
+# proyecto1
